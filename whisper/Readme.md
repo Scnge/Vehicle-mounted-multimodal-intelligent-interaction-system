@@ -1,10 +1,22 @@
-# Whisper 中文语音识别配置教程
 
-我将为您提供一个完整的教程，使用conda环境配置OpenAI的Whisper模型进行中文语音识别。
+# Whisper 中文语音识别系统
+
+一个基于OpenAI Whisper的中文语音识别系统，支持文件转录和实时麦克风转录，具有保存功能和唤醒词检测。
+
+## 功能特性
+
+- 中文语音转文字转录
+- 实时麦克风录音与转录
+- 音频文件批量转录
+- 录音文件保存选项
+- 转录文本保存选项
+- 唤醒词检测功能
+- 多设备支持（CPU、NVIDIA GPU、Apple Silicon）
+- 与智能决策系统集成
 
 ## 环境配置
 
-首先，我们需要创建一个conda环境并安装必要的依赖：
+首先，创建一个conda环境并安装必要的依赖：
 
 ```bash
 # 创建新的conda环境
@@ -21,42 +33,43 @@ pip install -U openai-whisper
 conda install ffmpeg
 pip install setuptools-rust
 pip install pyaudio
+
+# 安装唤醒词检测库（可选）
+pip install pvporcupine
+
+# 安装键盘控制库（Windows/Linux）
+pip install pynput
 ```
 
-## 文件目录结构
-
-以下是建议的项目目录结构：
+## 项目结构
 
 ```
 whisper_chinese/
-├── audio/                 # 存放音频文件
-│   └── example.mp3        # 示例音频文件
-├── transcripts/           # 存放转录结果
-│   └── example.txt        # 示例转录文件
+├── src/                   # 源代码目录
+│   ├── __init__.py        # 使src成为一个包
+│   ├── audio_recorder.py  # 音频录制模块
+│   ├── transcriber.py     # 语音转录模块
+│   ├── wake_word.py       # 唤醒词检测模块
+│   └── utils.py           # 工具函数
+│
+├── bin/                   # 可执行脚本
+│   ├── transcribe_file.py # 转录文件的脚本
+│   └── transcribe_mic.py  # 实时麦克风转录脚本
+│
+├── config/                # 配置文件
+│   └── default.json       # 默认配置
+│
+├── data/                  # 数据目录
+│   ├── audio/             # 音频文件
+│   ├── recordings/        # 保存的录音
+│   └── transcripts/       # 保存的转录文本
+│
 ├── models/                # 模型将自动下载到这里
-├── transcribe_file.py     # 转录音频文件的脚本
-├── transcribe_mic_fixed.py      # 从麦克风实时转录的脚本
+├── README.md              # 项目说明
 └── requirements.txt       # 项目依赖
 ```
 
-
-
 ## 使用说明
-
-### 转录音频文件
-
-```bash
-# 激活环境
-conda activate whisper_env
-
-# 转录音频文件
-python transcribe_file.py --audio audio/example.mp3 --model medium
-```
-
-参数说明:
-- `--audio`: 要转录的音频文件路径
-- `--model`: 模型大小，可选 tiny, base, small, medium, large（越大准确率越高，但需要更多内存）
-- `--output_dir`: 转录文本保存目录
 
 ### 实时麦克风转录
 
@@ -64,22 +77,63 @@ python transcribe_file.py --audio audio/example.mp3 --model medium
 # 激活环境
 conda activate whisper_env
 
-# 启动实时转录
-# 使用Apple Silicon GPU (M1/M2/M3)
-python transcribe_mic_fixed.py --model small --device mps
+# 基本使用（自动选择设备）
+python bin/transcribe_mic.py --model medium
 
-# 自动选择最佳设备
-python transcribe_mic_fixed.py --model small --device auto
+# 使用唤醒词（小爱同学风格）
+python bin/transcribe_mic.py --model medium --wake_word "你好小智"
 
-# 使用NVIDIA GPU
-python transcribe_mic_fixed.py --model small --device cuda
+# 保存录音和转录文本
+python bin/transcribe_mic.py --model medium --save_audio --save_transcript
+
+# 指定设备
+# Apple Silicon GPU (M1/M2/M3)
+python bin/transcribe_mic.py --model medium --device mps
+
+# NVIDIA GPU
+python bin/transcribe_mic.py --model medium --device cuda
 
 # 强制使用CPU
-python transcribe_mic_fixed.py --model small --device cpu
+python bin/transcribe_mic.py --model small --device cpu
 ```
 
-参数说明:
+实时转录参数说明:
+- `--model`: 模型大小，可选 tiny, base, small, medium, large
+- `--device`: 运行设备，可选 cpu, cuda, mps, auto
+- `--wake_word`: 唤醒词，留空则不使用唤醒功能
+- `--save_audio`: 是否保存录音文件
+- `--audio_dir`: 录音文件保存目录，默认为 data/recordings
+- `--save_transcript`: 是否保存转录文本
+- `--transcript_dir`: 转录文本保存目录，默认为 data/transcripts
+
+使用键盘控制:
+- `r`: 开始录音
+- `s`: 停止录音
+- `q`: 退出程序
+
+### 转录音频文件
+
+```bash
+# 激活环境
+conda activate whisper_env
+
+# 转录单个音频文件
+python bin/transcribe_file.py --audio data/audio/example.mp3 --model medium
+
+# 保存转录文本
+python bin/transcribe_file.py --audio data/audio/example.mp3 --model medium --save_transcript
+
+# 将转录结果发送到决策中枢
+python bin/transcribe_file.py --audio data/audio/example.mp3 --model medium --send_to_decision
+```
+
+文件转录参数说明:
+- `--audio`: 要转录的音频文件路径
 - `--model`: 模型大小，同上
+- `--device`: 运行设备，同上
+- `--save_transcript`: 是否保存转录文本
+- `--transcript_dir`: 转录文本保存目录
+- `--send_to_decision`: 是否将转录结果发送到决策中枢
 
 ## 不同模型大小对比
 
@@ -92,6 +146,12 @@ python transcribe_mic_fixed.py --model small --device cpu
 - `large`: 最大模型，约1.5GB，最高准确率，需要较高配置
 
 对于中文语音识别，建议至少使用`medium`模型以获得良好的识别效果。
+
+## 与智能决策中枢集成
+
+本系统支持将转录文本发送到智能决策中枢，实现语音命令控制。您可以在`src/utils.py`中的`send_to_decision_center`函数中实现与决策系统的通信。
+
+默认情况下，该函数只会打印转录文本，您可以根据实际需求进行修改，例如通过HTTP请求、WebSocket或消息队列等方式发送数据。
 
 ## 可能遇到的问题与解决方案
 
@@ -106,4 +166,34 @@ python transcribe_mic_fixed.py --model small --device cpu
    - macOS: `brew install ffmpeg`
    - Windows: 下载二进制文件并添加到PATH
 
-现在您已经拥有完整的Whisper中文语音识别配置和代码。祝您使用愉快！
+5. **唤醒词检测失败**: 确保已安装`pvporcupine`库，并使用支持的唤醒词。
+
+## 自定义开发
+
+如果您需要进一步扩展系统功能，可以修改以下文件：
+
+- `src/audio_recorder.py`: 修改音频录制逻辑
+- `src/transcriber.py`: 修改语音转录逻辑
+- `src/wake_word.py`: 修改唤醒词检测逻辑
+- `src/utils.py`: 修改决策中枢通信逻辑
+
+## 许可证
+
+本项目采用MIT许可证。Whisper模型由OpenAI提供，使用时请遵守相关条款。
+```
+
+要实现这个新的文件结构，您需要：
+
+1. 创建上述文件夹结构
+2. 创建并放置上述代码文件到对应位置
+3. 将README.md更新为上面的内容
+
+这个模块化的结构有以下优点：
+
+1. **职责分离**：每个模块只负责一种功能（录音、转录、唤醒词检测等）
+2. **可维护性**：各模块可以独立开发和测试
+3. **可扩展性**：轻松添加新功能而不破坏现有代码
+4. **代码重用**：不同脚本可以共享相同的功能模块
+5. **配置灵活**：命令行参数和配置文件提供多种自定义选项
+
+现在您的语音识别模块不仅支持基本的语音转文字功能，还支持保存录音和转录文本，以及唤醒词功能，并且可以方便地与智能决策系统集成。
