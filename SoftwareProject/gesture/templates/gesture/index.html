@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>手势识别控制面板</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+        .video-container {
+            flex: 2;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .controls {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .control-group {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .control-group h3 {
+            margin-top: 0;
+            color: #1a73e8;
+            font-size: 1.1em;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #5f6368;
+            font-size: 0.9em;
+        }
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #1a73e8;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .color-controls {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .color-group {
+            margin-bottom: 20px;
+        }
+        .value-display {
+            color: #1a73e8;
+            font-weight: bold;
+        }
+        .video-feed {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="video-container">
+            <img src="{% url 'video_feed' %}" class="video-feed">
+        </div>
+        <div class="controls">
+            <h2>控制面板</h2>
+            
+            <div class="control-group">
+                <h3>基本设置</h3>
+                <label>最大手数: <span id="max_hands_value" class="value-display">2</span></label>
+                <input type="range" id="max_hands" min="1" max="4" value="2">
+
+                <label>检测置信度: <span id="detection_confidence_value" class="value-display">50</span>%</label>
+                <input type="range" id="detection_confidence" min="0" max="100" value="50">
+
+                <label>跟踪置信度: <span id="tracking_confidence_value" class="value-display">50</span>%</label>
+                <input type="range" id="tracking_confidence" min="0" max="100" value="50">
+            </div>
+
+            <div class="color-group">
+                <h3>关键点颜色</h3>
+                <div class="color-controls">
+                    <div>
+                        <label>R: <span id="landmark_r_value" class="value-display">0</span></label>
+                        <input type="range" id="landmark_r" min="0" max="255" value="0">
+                    </div>
+                    <div>
+                        <label>G: <span id="landmark_g_value" class="value-display">0</span></label>
+                        <input type="range" id="landmark_g" min="0" max="255" value="0">
+                    </div>
+                    <div>
+                        <label>B: <span id="landmark_b_value" class="value-display">255</span></label>
+                        <input type="range" id="landmark_b" min="0" max="255" value="255">
+                    </div>
+                </div>
+            </div>
+
+            <div class="color-group">
+                <h3>边框颜色</h3>
+                <div class="color-controls">
+                    <div>
+                        <label>R: <span id="box_r_value" class="value-display">0</span></label>
+                        <input type="range" id="box_r" min="0" max="255" value="0">
+                    </div>
+                    <div>
+                        <label>G: <span id="box_g_value" class="value-display">255</span></label>
+                        <input type="range" id="box_g" min="0" max="255" value="255">
+                    </div>
+                    <div>
+                        <label>B: <span id="box_b_value" class="value-display">0</span></label>
+                        <input type="range" id="box_b" min="0" max="255" value="0">
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3>显示设置</h3>
+                <label>边框粗细: <span id="box_thickness_value" class="value-display">2</span></label>
+                <input type="range" id="box_thickness" min="1" max="10" value="2">
+
+                <label>关键点大小: <span id="landmark_size_value" class="value-display">2</span></label>
+                <input type="range" id="landmark_size" min="1" max="10" value="2">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateValue(inputId, valueId) {
+            document.getElementById(valueId).textContent = document.getElementById(inputId).value;
+        }
+
+        function updateParams() {
+            const params = {
+                max_hands: document.getElementById('max_hands').value,
+                detection_confidence: document.getElementById('detection_confidence').value,
+                tracking_confidence: document.getElementById('tracking_confidence').value,
+                landmark_r: document.getElementById('landmark_r').value,
+                landmark_g: document.getElementById('landmark_g').value,
+                landmark_b: document.getElementById('landmark_b').value,
+                box_r: document.getElementById('box_r').value,
+                box_g: document.getElementById('box_g').value,
+                box_b: document.getElementById('box_b').value,
+                box_thickness: document.getElementById('box_thickness').value,
+                landmark_size: document.getElementById('landmark_size').value
+            };
+
+            fetch('{% url "update_params" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: new URLSearchParams(params)
+            });
+        }
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        document.querySelectorAll('input[type="range"]').forEach(input => {
+            input.addEventListener('input', function() {
+                updateValue(this.id, this.id + '_value');
+                updateParams();
+            });
+        });
+    </script>
+</body>
+</html> 
