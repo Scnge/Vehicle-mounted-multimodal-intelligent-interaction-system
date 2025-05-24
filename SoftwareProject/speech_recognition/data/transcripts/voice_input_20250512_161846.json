@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-05-12T16:18:46.680529",
+  "audio_file": "/var/folders/z3/8r_zm5x56tdf2thmpctkpgf00000gn/T/tmpzl_2bih0.wav",
+  "transcript": "哈喽哈喽",
+  "sectionpart": "voice",
+  "model_info": {
+    "model_size": "tiny",
+    "device": "cpu",
+    "language": "zh"
+  }
+}

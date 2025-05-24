@@ -1,0 +1,10 @@
+{
+  "timestamp": "2025-05-11T11:57:50.784027",
+  "audio_file": "/var/folders/z3/8r_zm5x56tdf2thmpctkpgf00000gn/T/tmphlpt7im2.wav",
+  "transcript": "你好你好",
+  "model_info": {
+    "model_size": "tiny",
+    "device": "cpu",
+    "language": "zh"
+  }
+}

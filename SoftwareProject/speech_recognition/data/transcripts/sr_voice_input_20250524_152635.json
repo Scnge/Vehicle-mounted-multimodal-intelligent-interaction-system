@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-05-24T15:26:35.041199",
+  "audio_file": "/var/folders/z3/8r_zm5x56tdf2thmpctkpgf00000gn/T/tmpp3l_48v5.wav",
+  "transcript": "你好小智",
+  "sectionpart": "voice",
+  "model_info": {
+    "model_type": "speech_recognition",
+    "engine": "google",
+    "language": "zh"
+  }
+}

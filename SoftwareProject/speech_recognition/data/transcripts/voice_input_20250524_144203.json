@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-05-24T14:42:03.560607",
+  "audio_file": "/var/folders/z3/8r_zm5x56tdf2thmpctkpgf00000gn/T/tmpprzxk1p7.wav",
+  "transcript": "哈囉 你今天在心情怎麼樣",
+  "sectionpart": "voice",
+  "model_info": {
+    "model_size": "tiny",
+    "device": "cpu",
+    "language": "zh"
+  }
+}

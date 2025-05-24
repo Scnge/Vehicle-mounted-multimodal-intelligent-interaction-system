@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-05-24T14:16:47.236531",
+  "audio_file": "/var/folders/z3/8r_zm5x56tdf2thmpctkpgf00000gn/T/tmptvwifpk2.wav",
+  "transcript": "哈喽哈喽你好呀今天的天气很好",
+  "sectionpart": "voice",
+  "model_info": {
+    "model_size": "tiny",
+    "device": "cpu",
+    "language": "zh"
+  }
+}

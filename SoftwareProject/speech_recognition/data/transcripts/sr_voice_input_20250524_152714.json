@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-05-24T15:27:14.705780",
+  "audio_file": "/var/folders/z3/8r_zm5x56tdf2thmpctkpgf00000gn/T/tmpkn5rdnk0.wav",
+  "transcript": "你觉得今天的天气怎么样",
+  "sectionpart": "voice",
+  "model_info": {
+    "model_type": "speech_recognition",
+    "engine": "google",
+    "language": "zh"
+  }
+}

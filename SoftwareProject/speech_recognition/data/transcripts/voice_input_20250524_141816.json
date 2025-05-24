@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-05-24T14:18:16.652957",
+  "audio_file": "/var/folders/z3/8r_zm5x56tdf2thmpctkpgf00000gn/T/tmpnoxymvck.wav",
+  "transcript": "我要吃漢堡我要吃漢堡",
+  "sectionpart": "voice",
+  "model_info": {
+    "model_size": "tiny",
+    "device": "cpu",
+    "language": "zh"
+  }
+}

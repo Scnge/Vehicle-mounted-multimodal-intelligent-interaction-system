@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-05-24T14:42:22.550367",
+  "audio_file": "/var/folders/z3/8r_zm5x56tdf2thmpctkpgf00000gn/T/tmp_g85i1pq.wav",
+  "transcript": "你好 可以不要打一下你的心情吗",
+  "sectionpart": "voice",
+  "model_info": {
+    "model_size": "tiny",
+    "device": "cpu",
+    "language": "zh"
+  }
+}
