@@ -73,3 +73,4 @@
 2025-05-26 11:21:38,348 - INFO - 系统启动
 2025-05-26 11:21:46,200 - INFO - {"timestamp": "2025-05-26T11:21:46.200456", "event_type": "blink", "details": {"frames_count": 10, "ear": 0.24277492286272773, "threshold": 0.24}}
 2025-05-26 11:21:46,894 - INFO - {"timestamp": "2025-05-26T11:21:46.894559", "event_type": "nod", "details": {"motion_data": {"total_x": -11.23101806640625, "total_y": -37.04974365234375, "abs_x": 11.23101806640625, "abs_y": 37.04974365234375, "track_points": 15, "dir_history": 2, "total_disp": 38.7145873219944}, "threshold": 35.0}}
+2025-05-26 16:18:13,816 - INFO - 系统启动
