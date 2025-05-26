@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'integrated_view',
 ]
 
 MIDDLEWARE = [
@@ -75,15 +76,28 @@ WSGI_APPLICATION = 'SoftwareProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# # lhz: 2024-03-19
+# # 由于MySQL连接问题（错误：Can't connect to MySQL server），暂时切换到SQLite数据库
+# # 原MySQL配置保留如下：
+# """
+# DATABASES = {
+#     'default':
+#     {
+#         'ENGINE': 'django.db.backends.mysql',    # 数据库引擎
+#         'NAME': 'sp', # 数据库名称
+#         'HOST': '127.0.0.1', # 数据库地址，本机 ip 地址 127.0.0.1
+#         'PORT': 3306, # 端口
+#         'USER': 'root',  # 数据库用户名
+#         'PASSWORD': '051039', # 数据库密码
+#     }
+# }
+# """
+
+# 临时使用SQLite配置
 DATABASES = {
-    'default':
-    {
-        'ENGINE': 'django.db.backends.mysql',    # 数据库引擎
-        'NAME': 'sp', # 数据库名称
-        'HOST': '127.0.0.1', # 数据库地址，本机 ip 地址 127.0.0.1
-        'PORT': 3306, # 端口
-        'USER': 'root',  # 数据库用户名
-        'PASSWORD': '051039', # 数据库密码
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

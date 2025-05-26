@@ -1,0 +1,668 @@
+{
+    "timestamp": "2025-05-26T11:14:37.658298",
+    "face_detected": true,
+    "hand_detected": false,
+    "face_box": [
+        222,
+        165,
+        258,
+        258
+    ],
+    "last_events": [
+        {
+            "timestamp": "2025-05-26T11:14:37.658298",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": 25.591400146484375,
+                    "total_y": -118.5882568359375,
+                    "abs_x": 25.591400146484375,
+                    "abs_y": 118.5882568359375,
+                    "track_points": 5,
+                    "dir_history": 1,
+                    "total_disp": 121.31815371511289
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:55:42.211282",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 8,
+                "ear": 0.2468839617831236,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:55:35.013043",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 6,
+                "ear": 0.26308827951283487,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:55:34.083536",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 7,
+                "ear": 0.25431612566128947,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:55:32.528410",
+            "event_type": "hand_gesture",
+            "details": {
+                "gesture_name": "ok",
+                "hold_time": 1.0696125030517578,
+                "bbox": [
+                    18.0,
+                    236.0,
+                    201.0,
+                    453.0
+                ],
+                "hold_threshold": 1.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:55:29.431503",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 5,
+                "ear": 0.2467947253904046,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:55:27.459547",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 5,
+                "ear": 0.26178745854204355,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:55:26.259300",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": -11.85821533203125,
+                    "total_y": 47.6497802734375,
+                    "abs_x": 11.85821533203125,
+                    "abs_y": 47.6497802734375,
+                    "track_points": 15,
+                    "dir_history": 19,
+                    "total_disp": 49.103144817493046
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:55:23.953200",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 6,
+                "ear": 0.2767745471775515,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:55:21.677445",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 5,
+                "ear": 0.2854426538060704,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:55:20.869810",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 6,
+                "ear": 0.2533315164025961,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:55:17.347518",
+            "event_type": "hand_gesture",
+            "details": {
+                "gesture_name": "thumb_index",
+                "hold_time": 1.105147361755371,
+                "bbox": [
+                    260.0,
+                    194.0,
+                    487.0,
+                    399.0
+                ],
+                "hold_threshold": 1.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:55:17.291513",
+            "event_type": "shake",
+            "details": {
+                "motion_data": {
+                    "total_x": 29.028167724609375,
+                    "total_y": 2.8363037109375,
+                    "abs_x": 29.028167724609375,
+                    "abs_y": 2.8363037109375,
+                    "track_points": 15,
+                    "dir_history": 7,
+                    "total_disp": 29.16640430681731
+                },
+                "threshold": 10.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:53:58.868552",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 27,
+                "ear": 0.2571501886148103,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:53:54.614897",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 7,
+                "ear": 0.26117954071659655,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:53:53.412458",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 5,
+                "ear": 0.2952285319628878,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:53:49.932318",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 11,
+                "ear": 0.32930694743636313,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:53:18.335415",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 25,
+                "ear": 0.24341547773497887,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:53:13.420559",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 9,
+                "ear": 0.30584978961896403,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:53:11.925242",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 5,
+                "ear": 0.2468239343340736,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:53:10.596296",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 8,
+                "ear": 0.25592092586238,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:53:10.119673",
+            "event_type": "hand_gesture",
+            "details": {
+                "gesture_name": "ok",
+                "hold_time": 6.281198501586914,
+                "bbox": [
+                    93.0,
+                    149.0,
+                    273.0,
+                    387.0
+                ],
+                "hold_threshold": 1.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:53:06.197538",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 5,
+                "ear": 0.28137678690810053,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:53:04.915720",
+            "event_type": "hand_gesture",
+            "details": {
+                "gesture_name": "ok",
+                "hold_time": 1.077244520187378,
+                "bbox": [
+                    94.0,
+                    152.0,
+                    271.0,
+                    389.0
+                ],
+                "hold_threshold": 1.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:52:55.680299",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 14,
+                "ear": 0.31231270479595574,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:52:27.526837",
+            "event_type": "hand_gesture",
+            "details": {
+                "gesture_name": "part_hand_heart",
+                "hold_time": 1.0725231170654297,
+                "bbox": [
+                    -2.0,
+                    226.0,
+                    169.0,
+                    454.0
+                ],
+                "hold_threshold": 1.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:50:12.507042",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 5,
+                "ear": 0.25022552104754786,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:45:11.795785",
+            "event_type": "hand_gesture",
+            "details": {
+                "gesture_name": "part_hand_heart",
+                "hold_time": 1.0810632705688477,
+                "bbox": [
+                    73.0,
+                    224.0,
+                    324.0,
+                    477.0
+                ],
+                "hold_threshold": 1.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:45:10.290573",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 13,
+                "ear": 0.3519887428721546,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:45:10.287577",
+            "event_type": "yawn",
+            "details": {
+                "counter": 1,
+                "mar": 0.44282475772679986,
+                "threshold": 0.5,
+                "frames_count": 0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:45:09.998357",
+            "event_type": "shake",
+            "details": {
+                "motion_data": {
+                    "total_x": -29.1346435546875,
+                    "total_y": -2.623443603515625,
+                    "abs_x": 29.1346435546875,
+                    "abs_y": 2.623443603515625,
+                    "track_points": 15,
+                    "dir_history": 14,
+                    "total_disp": 29.252519744451433
+                },
+                "threshold": 10.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:45:08.414084",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 9,
+                "ear": 0.2411415998467562,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:45:06.824523",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 9,
+                "ear": 0.26011573441154684,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:45:05.473498",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 6,
+                "ear": 0.24117767351595493,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:45:03.082424",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 9,
+                "ear": 0.3113562066214709,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:45:01.199044",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": -3.959716796875,
+                    "total_y": -41.129638671875,
+                    "abs_x": 3.959716796875,
+                    "abs_y": 41.129638671875,
+                    "track_points": 15,
+                    "dir_history": 3,
+                    "total_disp": 41.31980801492729
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:44:59.870870",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 10,
+                "ear": 0.28072851171512525,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:44:56.949443",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 5,
+                "ear": 0.25021439102258214,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:44:56.269412",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": 34.55633544921875,
+                    "total_y": 78.09991455078125,
+                    "abs_x": 34.55633544921875,
+                    "abs_y": 78.09991455078125,
+                    "track_points": 7,
+                    "dir_history": 6,
+                    "total_disp": 85.40337799243227
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:44:55.868391",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 6,
+                "ear": 0.38608917763155304,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:44:53.448395",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": -46.129608154296875,
+                    "total_y": -111.31405639648438,
+                    "abs_x": 46.129608154296875,
+                    "abs_y": 111.31405639648438,
+                    "track_points": 15,
+                    "dir_history": 3,
+                    "total_disp": 120.49381685343309
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:44:52.137408",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 21,
+                "ear": 0.2815907162054839,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:28:30.085735",
+            "event_type": "hand_gesture",
+            "details": {
+                "gesture_name": "ok",
+                "hold_time": 2.0453202724456787,
+                "bbox": [
+                    316.0,
+                    163.0,
+                    477.0,
+                    379.0
+                ],
+                "hold_threshold": 1.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:28:29.056791",
+            "event_type": "hand_gesture",
+            "details": {
+                "gesture_name": "ok",
+                "hold_time": 1.0183742046356201,
+                "bbox": [
+                    334.0,
+                    156.0,
+                    494.0,
+                    388.0
+                ],
+                "hold_threshold": 1.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:28:25.550374",
+            "event_type": "shake",
+            "details": {
+                "motion_data": {
+                    "total_x": 81.70024108886719,
+                    "total_y": -14.4156494140625,
+                    "abs_x": 81.70024108886719,
+                    "abs_y": 14.4156494140625,
+                    "track_points": 9,
+                    "dir_history": 6,
+                    "total_disp": 82.96228264704499
+                },
+                "threshold": 10.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:28:22.394379",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": 0.8567962646484375,
+                    "total_y": 37.61004638671875,
+                    "abs_x": 0.8567962646484375,
+                    "abs_y": 37.61004638671875,
+                    "track_points": 15,
+                    "dir_history": 1,
+                    "total_disp": 37.61980447916033
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:28:18.208575",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": -63.1661376953125,
+                    "total_y": 199.05996704101562,
+                    "abs_x": 63.1661376953125,
+                    "abs_y": 199.05996704101562,
+                    "track_points": 5,
+                    "dir_history": 2,
+                    "total_disp": 208.8416419915181
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:28:15.593093",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": 16.542205810546875,
+                    "total_y": 38.374847412109375,
+                    "abs_x": 16.542205810546875,
+                    "abs_y": 38.374847412109375,
+                    "track_points": 10,
+                    "dir_history": 5,
+                    "total_disp": 41.788437240236306
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:26:55.829560",
+            "event_type": "shake",
+            "details": {
+                "motion_data": {
+                    "total_x": -42.20550537109375,
+                    "total_y": 3.38720703125,
+                    "abs_x": 42.20550537109375,
+                    "abs_y": 3.38720703125,
+                    "track_points": 6,
+                    "dir_history": 3,
+                    "total_disp": 42.34120753004067
+                },
+                "threshold": 10.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:26:52.240657",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 5,
+                "ear": 0.28436806898965117,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:26:52.073064",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": -15.78326416015625,
+                    "total_y": -37.336456298828125,
+                    "abs_x": 15.78326416015625,
+                    "abs_y": 37.336456298828125,
+                    "track_points": 13,
+                    "dir_history": 5,
+                    "total_disp": 40.53544617373263
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:26:51.445452",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 5,
+                "ear": 0.25338280877371244,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:25:42.986664",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 5,
+                "ear": 0.24383619334652695,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:25:42.984672",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": 22.86962890625,
+                    "total_y": 87.09686279296875,
+                    "abs_x": 22.86962890625,
+                    "abs_y": 87.09686279296875,
+                    "track_points": 5,
+                    "dir_history": 1,
+                    "total_disp": 90.04933889089253
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T10:25:40.295576",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": 32.834991455078125,
+                    "total_y": -90.40213012695312,
+                    "abs_x": 32.834991455078125,
+                    "abs_y": 90.40213012695312,
+                    "track_points": 5,
+                    "dir_history": 3,
+                    "total_disp": 96.18046472826808
+                },
+                "threshold": 35.0
+            }
+        }
+    ],
+    "fatigue_level": 10,
+    "ear": 0.23631841038579138,
+    "mar": 0.4160061906629652,
+    "current_gesture": "ok",
+    "system_status": "正在检测人脸",
+    "head_gesture": "nod"
+}

@@ -16,12 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
     path('admin/', admin.site.urls),
+    path('', views.home, name='home'),  # 设置主页
     path('hello/', views.hello),
-    path('speech_recognition/', include('speech_recognition.urls')),
+    # path('speech_recognition/', include('speech_recognition.urls')),  #lhz改 暂时注释掉speech_recognition
     path('gesture/', include('gesture.urls')),
+    path('integrated/', include('integrated_view.urls')),
 ]

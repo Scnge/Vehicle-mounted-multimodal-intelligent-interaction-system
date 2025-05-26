@@ -115,11 +115,20 @@
             gap: 15px;
             margin-bottom: 30px;
         }
+        .app-grid a {
+            text-decoration: none;
+            color: inherit;
+        }
         .app-icon {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .app-icon:hover {
+            transform: scale(1.05);
         }
         .app-icon-img {
             width: 40px;
@@ -231,30 +240,30 @@
         <div class="right-panel">
             <div class="section-title">最近应用</div>
             <div class="app-grid">
-                <div class="app-icon">
+                <a href="/car/" class="app-icon">
                     <div class="app-icon-img blue">🚗</div>
                     <div class="app-name">车辆中心</div>
-                </div>
-                <div class="app-icon">
+                </a>
+                <a href="/charge/" class="app-icon">
                     <div class="app-icon-img green">🔋</div>
                     <div class="app-name">充电管理</div>
-                </div>
-                <div class="app-icon">
-                    <div class="app-icon-img green">☕</div>
-                    <div class="app-name">智能服务</div>
-                </div>
-                <div class="app-icon">
+                </a>
+                <a href="/integrated/" class="app-icon">
+                    <div class="app-icon-img purple">🔄</div>
+                    <div class="app-name">手势识别和疲劳检测</div>
+                </a>
+                <a href="/record/" class="app-icon">
                     <div class="app-icon-img purple">📹</div>
                     <div class="app-name">行车记录</div>
-                </div>
-                <div class="app-icon">
+                </a>
+                <a href="/bluetooth/" class="app-icon">
                     <div class="app-icon-img green">📞</div>
                     <div class="app-name">蓝牙电话</div>
-                </div>
-                <div class="app-icon">
+                </a>
+                <a href="/navigation/" class="app-icon">
                     <div class="app-icon-img red">🎯</div>
                     <div class="app-name">高德导航</div>
-                </div>
+                </a>
             </div>
             
             <div class="section-title">全部应用</div>
@@ -313,6 +322,12 @@
                     <div class="app-icon-img green">🌱</div>
                     <div class="app-name">节能模式</div>
                 </div>
+                <div class="app-icon">
+                    <a href="#" onclick="launchIntegratedDemo(); return false;" class="app-icon">
+                        <div class="app-icon-img purple">🔄</div>
+                        <div class="app-name">手势识别和疲劳检测</div>
+                    </a>
+                </div>
             </div>
             
             <div class="bottom-controls">
@@ -364,6 +379,26 @@
             }
         }
 
+    </script>
+
+    <script>
+        function launchIntegratedDemo() {
+            fetch('/integrated/launch/', {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    console.log('集成系统已启动');
+                } else {
+                    alert('启动失败: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('启动请求失败');
+            });
+        }
     </script>
 </body>
 </html> 
