@@ -25,12 +25,11 @@ conda activate whisper_env
 
 # 安装PyTorch (具体版本可能需要根据您的CUDA版本调整)
 conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+pip install -r requirements.txt  
 
-# 安装Whisper
-pip install -U openai-whisper
 
 # 安装音频处理依赖
-conda install ffmpeg
+
 pip install setuptools-rust
 pip install pyaudio
 
@@ -148,11 +147,11 @@ python bin/transcribe_file.py --audio data/audio/example.mp3 --model medium --se
 
 对于中文语音识别，建议至少使用`medium`模型以获得良好的识别效果。
 
-## 与智能决策中枢集成
+## 实现语音智能决策中枢（目前还未实现）
 
-本系统支持将转录文本发送到智能决策中枢，实现语音命令控制。您可以在`src/utils.py`中的`send_to_decision_center`函数中实现与决策系统的通信。
+本系统支持将转录文本发送到语音智能决策中枢，实现语音命令控制。在`src/utils.py`中需要实现以下的功能：解析语音模块产生的文本，然后将文本与指令表进行模糊匹配，当相似度达到一定程度的时候，执行指令。因此要创建一个指令表格。
 
-默认情况下，该函数只会打印转录文本，您可以根据实际需求进行修改，例如通过HTTP请求、WebSocket或消息队列等方式发送数据。
+
 
 ## 可能遇到的问题与解决方案
 

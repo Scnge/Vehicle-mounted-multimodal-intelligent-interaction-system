@@ -28,18 +28,64 @@ def load_config(config_file="config/default.json"):
         print(f"配置文件 {config_file} 格式错误，将使用默认配置")
         return {}
 
+def parse_command(text):
+    """解析语音指令"""
+    # 预定义的指令和对应的操作
+    commands = {
+        '温度': {
+            '升高': lambda x: f'已将温度升高到{x}度',
+            '调高': lambda x: f'已将温度升高到{x}度',
+            '降低': lambda x: f'已将温度降低到{x}度',
+            '调低': lambda x: f'已将温度降低到{x}度',
+            '设置': lambda x: f'已将温度设置为{x}度'
+        },
+        '音乐': {
+            '播放': lambda x: f'正在播放{x}',
+            '暂停': lambda _: '音乐已暂停',
+            '继续': lambda _: '音乐继续播放',
+            '停止': lambda _: '音乐已停止',
+            '下一首': lambda _: '播放下一首',
+            '上一首': lambda _: '播放上一首'
+        },
+        '车窗': {
+            '打开': lambda _: '已打开车窗',
+            '关闭': lambda _: '已关闭车窗'
+        },
+        '空调': {
+            '打开': lambda _: '已打开空调',
+            '关闭': lambda _: '已关闭空调'
+        }
+    }
+
+    # 提取数字
+    number = None
+    for word in text.split():
+        if word.isdigit():
+            number = int(word)
+            break
+
+    # 遍历指令匹配
+    for device, actions in commands.items():
+        if device in text:
+            for action, func in actions.items():
+                if action in text:
+                    return func(number) if number else func(None)
+
+    return None
+
 def send_to_decision_center(text):
     """将转录文本发送给决策中枢"""
     try:
-        # 这里可以根据实际情况实现与决策中枢的通信
-        print(f"发送文本到决策中枢: {text}")
+        # 解析指令
+        result = parse_command(text)
         
-        # 示例：通过HTTP发送
-        # import requests
-        # response = requests.post("http://localhost:8000/decision", json={"text": text})
-        # print(f"决策中枢响应: {response.json()}")
-        
-        return True
+        if result:
+            print(f"✅ {result}")
+            return True
+        else:
+            print(f"❌ 未能识别指令: {text}")
+            return False
+            
     except Exception as e:
-        print(f"发送到决策中枢时出错: {e}")
+        print(f"❌ 处理指令时出错: {e}")
         return False
