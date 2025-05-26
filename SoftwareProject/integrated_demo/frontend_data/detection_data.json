@@ -1,14 +1,39 @@
 {
-    "timestamp": "2025-05-26T11:14:37.658298",
+    "timestamp": "2025-05-26T11:21:46.894559",
     "face_detected": true,
     "hand_detected": false,
     "face_box": [
         222,
-        165,
+        136,
         258,
         258
     ],
     "last_events": [
+        {
+            "timestamp": "2025-05-26T11:21:46.894559",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": -11.23101806640625,
+                    "total_y": -37.04974365234375,
+                    "abs_x": 11.23101806640625,
+                    "abs_y": 37.04974365234375,
+                    "track_points": 15,
+                    "dir_history": 2,
+                    "total_disp": 38.7145873219944
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-26T11:21:46.200456",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 10,
+                "ear": 0.24277492286272773,
+                "threshold": 0.24
+            }
+        },
         {
             "timestamp": "2025-05-26T11:14:37.658298",
             "event_type": "nod",
@@ -660,8 +685,8 @@
         }
     ],
     "fatigue_level": 10,
-    "ear": 0.23631841038579138,
-    "mar": 0.4160061906629652,
+    "ear": 0.22867928088266343,
+    "mar": 0.4640810651464652,
     "current_gesture": "ok",
     "system_status": "正在检测人脸",
     "head_gesture": "nod"

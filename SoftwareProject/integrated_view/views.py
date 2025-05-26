@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import subprocess
@@ -6,10 +5,6 @@ import sys
 import os
 import threading
 import json
-
-def index(request):
-    """显示启动按钮的页面"""
-    return render(request, 'integrated_view/index.html')
 
 @csrf_exempt
 def launch_demo(request):
