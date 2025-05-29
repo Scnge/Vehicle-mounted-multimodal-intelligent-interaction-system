@@ -1,0 +1,12 @@
+{
+    "timestamp": "2025-05-27T18:24:10.105532",
+    "face_detected": false,
+    "hand_detected": false,
+    "face_box": null,
+    "last_events": [],
+    "fatigue_level": 0,
+    "ear": 0,
+    "mar": 0,
+    "current_gesture": null,
+    "system_status": "初始化"
+}

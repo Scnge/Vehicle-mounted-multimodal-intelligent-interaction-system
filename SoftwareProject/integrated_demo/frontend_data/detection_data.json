@@ -1,14 +1,524 @@
 {
-    "timestamp": "2025-05-26T11:21:46.894559",
+    "timestamp": "2025-05-27T19:50:42.464874",
     "face_detected": true,
     "hand_detected": false,
     "face_box": [
-        222,
-        136,
-        258,
-        258
+        194,
+        254,
+        179,
+        179
     ],
     "last_events": [
+        {
+            "timestamp": "2025-05-27T19:50:42.464874",
+            "event_type": "shake",
+            "details": {
+                "motion_data": {
+                    "total_x": -33.198822021484375,
+                    "total_y": -15.57403564453125,
+                    "abs_x": 33.198822021484375,
+                    "abs_y": 15.57403564453125,
+                    "track_points": 15,
+                    "dir_history": 20,
+                    "total_disp": 36.67032001321131
+                },
+                "threshold": 10.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:50:32.384077",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 6,
+                "ear": 0.2504635953892722,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:50:31.453757",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 11,
+                "ear": 0.3410847272838562,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:50:30.109972",
+            "event_type": "yawn",
+            "details": {
+                "counter": 2,
+                "mar": 0.4892276957866878,
+                "threshold": 0.5,
+                "frames_count": 0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:50:29.853548",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 7,
+                "ear": 0.2453411101713022,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:50:28.776050",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 8,
+                "ear": 0.277085949454985,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:50:27.441995",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 12,
+                "ear": 0.2594345346265743,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:50:22.366005",
+            "event_type": "yawn",
+            "details": {
+                "counter": 1,
+                "mar": 0.4038661504863686,
+                "threshold": 0.5,
+                "frames_count": 0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:50:21.709934",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": 6.986907958984375,
+                    "total_y": 57.008148193359375,
+                    "abs_x": 6.986907958984375,
+                    "abs_y": 57.008148193359375,
+                    "track_points": 5,
+                    "dir_history": 2,
+                    "total_disp": 57.43470939478446
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:50:19.056261",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": -15.457122802734375,
+                    "total_y": -39.251495361328125,
+                    "abs_x": 15.457122802734375,
+                    "abs_y": 39.251495361328125,
+                    "track_points": 14,
+                    "dir_history": 9,
+                    "total_disp": 42.185335525976015
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:50:18.383398",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 7,
+                "ear": 0.25603830448905435,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:36:03.004354",
+            "event_type": "yawn",
+            "details": {
+                "counter": 1,
+                "mar": 0.49539723655208184,
+                "threshold": 0.5,
+                "frames_count": 0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:36:02.602250",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": 0.03216552734375,
+                    "total_y": 39.19598388671875,
+                    "abs_x": 0.03216552734375,
+                    "abs_y": 39.19598388671875,
+                    "track_points": 15,
+                    "dir_history": 8,
+                    "total_disp": 39.19599708476703
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:36:02.312380",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 22,
+                "ear": 0.240060362612383,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:35:57.530278",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 9,
+                "ear": 0.24146215808563387,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:35:56.473103",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": 17.570953369140625,
+                    "total_y": -35.454681396484375,
+                    "abs_x": 17.570953369140625,
+                    "abs_y": 35.454681396484375,
+                    "track_points": 15,
+                    "dir_history": 4,
+                    "total_disp": 39.56984755121922
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:35:55.133285",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 6,
+                "ear": 0.36411006725549444,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:35:53.151561",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 5,
+                "ear": 0.3255631132161036,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:35:49.657824",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": 4.326385498046875,
+                    "total_y": -47.99249267578125,
+                    "abs_x": 4.326385498046875,
+                    "abs_y": 47.99249267578125,
+                    "track_points": 5,
+                    "dir_history": 3,
+                    "total_disp": 48.18710371782711
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:35:47.002456",
+            "event_type": "shake",
+            "details": {
+                "motion_data": {
+                    "total_x": 37.58001708984375,
+                    "total_y": 3.46795654296875,
+                    "abs_x": 37.58001708984375,
+                    "abs_y": 3.46795654296875,
+                    "track_points": 15,
+                    "dir_history": 11,
+                    "total_disp": 37.73969272605261
+                },
+                "threshold": 10.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T19:35:42.587977",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": -10.6573486328125,
+                    "total_y": -38.177215576171875,
+                    "abs_x": 10.6573486328125,
+                    "abs_y": 38.177215576171875,
+                    "track_points": 8,
+                    "dir_history": 2,
+                    "total_disp": 39.63683727330942
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T18:44:44.789678",
+            "event_type": "shake",
+            "details": {
+                "motion_data": {
+                    "total_x": 55.046905517578125,
+                    "total_y": 18.17218017578125,
+                    "abs_x": 55.046905517578125,
+                    "abs_y": 18.17218017578125,
+                    "track_points": 15,
+                    "dir_history": 13,
+                    "total_disp": 57.96887043407203
+                },
+                "threshold": 10.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T18:44:44.391542",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 8,
+                "ear": 0.27581872627172227,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-27T18:44:38.685065",
+            "event_type": "shake",
+            "details": {
+                "motion_data": {
+                    "total_x": -35.7266845703125,
+                    "total_y": -7.83331298828125,
+                    "abs_x": 35.7266845703125,
+                    "abs_y": 7.83331298828125,
+                    "track_points": 15,
+                    "dir_history": 15,
+                    "total_disp": 36.575357588942055
+                },
+                "threshold": 10.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T18:44:24.805659",
+            "event_type": "shake",
+            "details": {
+                "motion_data": {
+                    "total_x": 27.797271728515625,
+                    "total_y": -9.6385498046875,
+                    "abs_x": 27.797271728515625,
+                    "abs_y": 9.6385498046875,
+                    "track_points": 15,
+                    "dir_history": 7,
+                    "total_disp": 29.420910215123794
+                },
+                "threshold": 10.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T18:44:20.420252",
+            "event_type": "shake",
+            "details": {
+                "motion_data": {
+                    "total_x": 60.784515380859375,
+                    "total_y": 27.5010986328125,
+                    "abs_x": 60.784515380859375,
+                    "abs_y": 27.5010986328125,
+                    "track_points": 12,
+                    "dir_history": 5,
+                    "total_disp": 66.71632286103312
+                },
+                "threshold": 10.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T18:44:07.948673",
+            "event_type": "shake",
+            "details": {
+                "motion_data": {
+                    "total_x": -95.72869873046875,
+                    "total_y": -17.59881591796875,
+                    "abs_x": 95.72869873046875,
+                    "abs_y": 17.59881591796875,
+                    "track_points": 15,
+                    "dir_history": 13,
+                    "total_disp": 97.33294448614713
+                },
+                "threshold": 10.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T18:44:03.307248",
+            "event_type": "yawn",
+            "details": {
+                "counter": 2,
+                "mar": 0.4922811838905303,
+                "threshold": 0.5,
+                "frames_count": 0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T18:44:02.183884",
+            "event_type": "shake",
+            "details": {
+                "motion_data": {
+                    "total_x": 27.43096923828125,
+                    "total_y": 13.66754150390625,
+                    "abs_x": 27.43096923828125,
+                    "abs_y": 13.66754150390625,
+                    "track_points": 15,
+                    "dir_history": 20,
+                    "total_disp": 30.647345139710424
+                },
+                "threshold": 10.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T18:43:50.038023",
+            "event_type": "yawn",
+            "details": {
+                "counter": 1,
+                "mar": 0.49528263549575346,
+                "threshold": 0.5,
+                "frames_count": 0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T18:43:49.365817",
+            "event_type": "blink",
+            "details": {
+                "frames_count": 5,
+                "ear": 0.2595585332004341,
+                "threshold": 0.24
+            }
+        },
+        {
+            "timestamp": "2025-05-27T18:43:48.713244",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": -30.922821044921875,
+                    "total_y": -63.07421875,
+                    "abs_x": 30.922821044921875,
+                    "abs_y": 63.07421875,
+                    "track_points": 15,
+                    "dir_history": 16,
+                    "total_disp": 70.24655103490217
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T18:43:34.454502",
+            "event_type": "shake",
+            "details": {
+                "motion_data": {
+                    "total_x": 25.58770751953125,
+                    "total_y": -12.17431640625,
+                    "abs_x": 25.58770751953125,
+                    "abs_y": 12.17431640625,
+                    "track_points": 15,
+                    "dir_history": 20,
+                    "total_disp": 28.336279855770833
+                },
+                "threshold": 10.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T18:43:07.289462",
+            "event_type": "shake",
+            "details": {
+                "motion_data": {
+                    "total_x": -26.56805419921875,
+                    "total_y": -8.94891357421875,
+                    "abs_x": 26.56805419921875,
+                    "abs_y": 8.94891357421875,
+                    "track_points": 15,
+                    "dir_history": 8,
+                    "total_disp": 28.034702746622116
+                },
+                "threshold": 10.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T18:42:58.480619",
+            "event_type": "shake",
+            "details": {
+                "motion_data": {
+                    "total_x": 52.34063720703125,
+                    "total_y": -24.0020751953125,
+                    "abs_x": 52.34063720703125,
+                    "abs_y": 24.0020751953125,
+                    "track_points": 11,
+                    "dir_history": 9,
+                    "total_disp": 57.581610926749
+                },
+                "threshold": 10.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T18:42:55.017507",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": 1.1201171875,
+                    "total_y": -35.155731201171875,
+                    "abs_x": 1.1201171875,
+                    "abs_y": 35.155731201171875,
+                    "track_points": 15,
+                    "dir_history": 4,
+                    "total_disp": 35.17357102716161
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T18:42:49.941346",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": -8.6610107421875,
+                    "total_y": -37.35028076171875,
+                    "abs_x": 8.6610107421875,
+                    "abs_y": 37.35028076171875,
+                    "track_points": 8,
+                    "dir_history": 3,
+                    "total_disp": 38.341316879516604
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T18:41:49.544089",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": -6.4925537109375,
+                    "total_y": 41.373565673828125,
+                    "abs_x": 6.4925537109375,
+                    "abs_y": 41.373565673828125,
+                    "track_points": 6,
+                    "dir_history": 2,
+                    "total_disp": 41.879890045891685
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-05-27T18:41:46.782343",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": -43.24462890625,
+                    "total_y": -115.57867431640625,
+                    "abs_x": 43.24462890625,
+                    "abs_y": 115.57867431640625,
+                    "track_points": 12,
+                    "dir_history": 9,
+                    "total_disp": 123.40392167989306
+                },
+                "threshold": 35.0
+            }
+        },
         {
             "timestamp": "2025-05-26T11:21:46.894559",
             "event_type": "nod",
@@ -684,10 +1194,10 @@
             }
         }
     ],
-    "fatigue_level": 10,
-    "ear": 0.22867928088266343,
-    "mar": 0.4640810651464652,
+    "fatigue_level": 60,
+    "ear": 0.2597985089789858,
+    "mar": 0.5366092492300115,
     "current_gesture": "ok",
     "system_status": "正在检测人脸",
-    "head_gesture": "nod"
+    "head_gesture": "shake"
 }
