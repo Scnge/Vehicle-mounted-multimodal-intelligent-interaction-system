@@ -1,12 +1,12 @@
 {
-    "timestamp": "2025-05-27T19:50:42.464874",
+    "timestamp": "2025-05-30T18:00:45.017678",
     "face_detected": true,
     "hand_detected": false,
     "face_box": [
-        194,
-        254,
+        214,
+        293,
         179,
-        179
+        180
     ],
     "last_events": [
         {
@@ -1195,8 +1195,8 @@
         }
     ],
     "fatigue_level": 60,
-    "ear": 0.2597985089789858,
-    "mar": 0.5366092492300115,
+    "ear": 0.3360124434201972,
+    "mar": 0.4951073573079799,
     "current_gesture": "ok",
     "system_status": "正在检测人脸",
     "head_gesture": "shake"

@@ -5,6 +5,11 @@ import sys
 import os
 import threading
 import json
+from django.shortcuts import render
+
+def integrated_home(request):
+    return render(request, 'integrated/welcome.html')  # 使用你准备的模板路径
+
 
 @csrf_exempt
 def launch_demo(request):
@@ -45,3 +50,4 @@ def get_detection_data(request):
             return JsonResponse({'status': 'error', 'message': '数据文件不存在'})
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)}) 
+    
