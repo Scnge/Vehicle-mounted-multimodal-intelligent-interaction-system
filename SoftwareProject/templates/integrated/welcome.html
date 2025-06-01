@@ -312,5 +312,52 @@
         </div>
     </div>
 
+    <script>
+        // 页面加载完成后自动启动检测
+        window.addEventListener('load', function() {
+            const startBtn = document.getElementById('start-btn');
+            if (startBtn) {
+                startBtn.click();
+            }
+        });
+
+        // 导出日志功能
+        document.getElementById('export-log-btn').addEventListener('click', function() {
+            const logArea = document.getElementById('log-area');
+            const logContent = logArea.value;
+            const blob = new Blob([logContent], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'gesture_detection_log.txt';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        });
+
+        // 保存前端数据功能
+        document.getElementById('save-data-btn').addEventListener('click', function() {
+            const data = {
+                nodDetect: document.getElementById('nod-detect').checked,
+                shakeDetect: document.getElementById('shake-detect').checked,
+                blinkDetect: document.getElementById('blink-detect').checked,
+                fatigueDetect: document.getElementById('fatigue-detect').checked,
+                nodSensitivity: document.getElementById('nod-sensitivity').value,
+                handDetect: document.getElementById('hand-detect').checked,
+                handDebug: document.getElementById('hand-debug').checked,
+                holdTime: document.getElementById('hold-time').value,
+                alternatingMode: document.getElementById('alternating-mode').checked,
+                faceBoxFrames: document.getElementById('face-box-frames').value,
+                frameRate: document.getElementById('frame-rate').value
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'gesture_detection_settings.json';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        });
+    </script>
 </body>
 </html>

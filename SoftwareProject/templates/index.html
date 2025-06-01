@@ -323,7 +323,7 @@
                     <div class="app-name">节能模式</div>
                 </div>
                 <div class="app-icon">
-                    <a href="#" onclick="launchIntegratedDemo(); return false;" class="app-icon">
+                    <a href="/integrated/" onclick="launchIntegratedDemo(); return false;" class="app-icon">
                         <div class="app-icon-img purple">🔄</div>
                         <div class="app-name">手势识别和疲劳检测</div>
                     </a>
@@ -390,6 +390,8 @@
             .then(data => {
                 if (data.status === 'success') {
                     console.log('集成系统已启动');
+                    // 启动成功后跳转到welcome页面
+                    window.location.href = '/integrated/welcome';
                 } else {
                     alert('启动失败: ' + data.message);
                 }
