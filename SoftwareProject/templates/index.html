@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -20,6 +21,7 @@
             margin: 0 auto;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding-top: 12px;  /* 添加这一行，让它避开导航栏 */
         }
         .left-panel {
             flex: 1;
@@ -104,6 +106,33 @@
             font-size: 20px;
             color: #666;
         }
+        #title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 4px;
+        }
+        #artist {
+            font-size: 14px;
+            color: #777;
+        }
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            margin-top: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, #ff6a00, #ffb347);
+            border-radius: 4px;
+            transition: width 0.2s linear;
+        }
+
         .section-title {
             font-size: 16px;
             color: #666;
@@ -172,17 +201,28 @@
         .bottom-controls {
             display: flex;
             justify-content: space-between;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-            margin-top: 20px;
+            padding-top: 0px;
+            margin-top: 0px;
         }
         .temp-control {
             display: flex;
+            height: 60px;
             align-items: center;
+            margin-bottom: 20px;
         }
         .temp-value {
             font-size: 18px;
             margin: 0 10px;
+        }
+        .line {
+            border-bottom: 1px solid #eee;
+        }
+        .weather-widget {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-sizing: border-box;
+            margin-top: 10px;
         }
 
         /* Modal styles */
@@ -210,10 +250,55 @@
             color: #333;
             width: 300px; /* Same width as recognize.html box */
         }
+        .status-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 98%;
+            height: 32px;
+            background-color: #fff;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .status-left {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .status-right {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .status-icon {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
+        }
     </style>
 </head>
 <body>
     <div class="dashboard">
+        <div class="status-bar">
+            <div class="status-left">
+                <img src="{% static 'P.png' %}" alt="P" class="status-icon">
+                <img src="{% static 'rain.png' %}" alt="rain" class="status-icon">
+                <img src="{% static 'light.png' %}" alt="light" class="status-icon">
+            </div>
+            <div class="status-right">
+                <img src="{% static 'location.svg' %}" alt="位置" class="status-icon">
+                <img src="{% static 'volume.svg' %}" alt="音量" class="status-icon">
+                <img src="{% static 'wifi.svg' %}" alt="信号" class="status-icon">
+                <span id="current-time">--:--</span>
+            </div>
+        </div>
         <div class="left-panel">
             <div class="car-view">
                 <div id="map-container" style="width: 100%; height: 600px;"></div>
@@ -221,22 +306,25 @@
             
             <div class="media-player">
                 <div class="media-info">
-                    <div class="media-thumbnail"></div>
+                    <img id="cover" class="media-thumbnail" src="{% static 'music/cover1.jpg' %}" alt="封面">
                     <div>
-                        <div>{{ playing_title }}</div>
-                        <div>{{ playing_artist }}</div>
+                        <div id="title">浮光</div>
+                        <div id="artist">周深</div>
                     </div>
                 </div>
+                <div class="progress-container" id="progressContainer">
+                    <div class="progress" id="progress"></div>
+                </div>
                 <div class="media-controls">
-                    <button class="media-btn">⏮️</button>
-                    <button class="media-btn">▶️</button>
-                    <button class="media-btn">⏭️</button>
+                    <button class="media-btn" id="prevBtn">⏮️</button>
+                    <button class="media-btn play-btn" id="playBtn">▶️</button>
+                    <button class="media-btn" id="nextBtn">⏭️</button>
                     <button class="media-btn">❤️</button>
                     <button class="media-btn">🔄</button>
                 </div>
             </div>
         </div>
-        
+
         <div class="right-panel">
             <div class="section-title">最近应用</div>
             <div class="app-grid">
@@ -265,7 +353,7 @@
                     <div class="app-name">高德导航</div>
                 </a>
             </div>
-            
+
             <div class="section-title">全部应用</div>
             <div class="app-grid">
                 <div class="app-icon">
@@ -275,33 +363,42 @@
                     </a>
                 </div>
                 <div class="app-icon">
-                    <div class="app-icon-img blue">🧭</div>
-                    <div class="app-name">地图</div>
+                    <a href="#" onclick="launchIntegratedDemo(); return false;" class="app-icon">
+                        <div class="app-icon-img purple">🔄</div>
+                        <div class="app-name">手势识别和疲劳检测</div>
+                    </a>
                 </div>
                 <div class="app-icon">
-                    <div class="app-icon-img grey">AD</div>
-                    <div class="app-name">辅助驾驶</div>
+                    <div class="app-icon-img blue">🧭</div>
+                    <div class="app-name">地图</div>
                 </div>
                 <div class="app-icon">
                     <div class="app-icon-img purple">🎥</div>
                     <div class="app-name">全景摄像</div>
                 </div>
                 <div class="app-icon">
-                    <div class="app-icon-img blue">📊</div>
-                    <div class="app-name">电子仪表</div>
+                    <div class="app-icon-img grey">👕</div>
+                    <div class="app-name">个人设置</div>
                 </div>
+
                 <div class="app-icon">
                     <div class="app-icon-img purple">📹</div>
                     <div class="app-name">行车记录</div>
                 </div>
-                <div class="app-icon">
-                    <div class="app-icon-img grey">👕</div>
-                    <div class="app-name">个人设置</div>
-                </div>
-                <div class="app-icon">
-                    <div class="app-icon-img blue">🌐</div>
-                    <div class="app-name">浏览器</div>
-                </div>
+                <a href="https://www.bilibili.com/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="app-icon">
+                        <div class="app-icon-img blue">
+                            <img src="{% static 'bilibili.png' %}" class="app-icon-img">
+                        </div>
+                        <div class="app-name">bilibili</div>
+                    </div>
+                </a>
+                <a href="https://www.iqiyi.com/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="app-icon">
+                        <img src="{% static 'ai.png' %}" class="app-icon-img" >
+                        <div class="app-name">爱奇艺</div>
+                    </div>
+                </a>
                 <div class="app-icon">
                     <div class="app-icon-img blue">🚗</div>
                     <div class="app-name">车辆中心</div>
@@ -311,37 +408,25 @@
                     <div class="app-name">蓝牙电话</div>
                 </div>
                 <div class="app-icon">
-                    <div class="app-icon-img orange">☁️</div>
-                    <div class="app-name">天气</div>
+                    <div class="app-icon-img blue">🌐</div>
+                    <div class="app-name">浏览器</div>
                 </div>
                 <div class="app-icon">
                     <div class="app-icon-img green">🔋</div>
                     <div class="app-name">充电管理</div>
                 </div>
-                <div class="app-icon">
-                    <div class="app-icon-img green">🌱</div>
-                    <div class="app-name">节能模式</div>
-                </div>
-                <div class="app-icon">
-                    <a href="/integrated/" onclick="launchIntegratedDemo(); return false;" class="app-icon">
-                        <div class="app-icon-img purple">🔄</div>
-                        <div class="app-name">手势识别和疲劳检测</div>
-                    </a>
-                </div>
             </div>
-            
+
+            <div class="line"></div>
+            <div class="section-title">温度调节</div>
             <div class="bottom-controls">
                 <div class="temp-control">
-                    <button class="control-btn">➖</button>
-                    <div class="temp-value">{{ temperature }}°</div>
-                    <button class="control-btn">➕</button>
-                </div>
-                <div>
-                    <button class="control-btn">💨</button>
-                    <button class="control-btn">🦵</button>
-                    <button class="control-btn active">🚘</button>
+                    <button class="control-btn" id="decrease-btn">➖</button>
+                    <div class="temp-value" id="temp-value">{{ temperature|floatformat:"1" }}°</div>
+                    <button class="control-btn" id="increase-btn">➕</button>
                 </div>
             </div>
+            <div class="weather-widget" id="ww_c68eb251cf771" v='1.3' loc='id' a='{"t":"horizontal","lang":"zh","sl_lpl":1,"ids":["wl384"],"font":"Arial","sl_ics":"one_a","sl_sot":"fahrenheit","cl_bkg":"image","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722"}'><a href="https://weatherwidget.org/" id="ww_c68eb251cf771_u" target="_blank">weatherwidget.org</a></div>
         </div>
     </div>
 
@@ -353,6 +438,7 @@
         </div>
     </div>
 
+    <script async src="https://app3.weatherwidget.org/js/?id=ww_c68eb251cf771"></script>
     <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=YOUR_AMAP_API_KEY"></script>
     <script type="text/javascript">
         var map = new AMap.Map('map-container', {
@@ -382,6 +468,106 @@
     </script>
 
     <script>
+        const staticPath = "{% static 'music/' %}";
+        const songs = [
+            {
+                title: "浮光",
+                artist: "周深",
+                file: "song1.mp3",
+                cover: "cover1.jpg"
+            },
+            {
+                title: "seven",
+                artist: "Zenia",
+                file: "song2.mp3",
+                cover: "cover2.jpg"
+            },
+            {
+                title: "志铭",
+                artist: "犬儒乐队",
+                file: "song3.mp3",
+                cover: "cover3.jpg"
+            }
+        ];
+
+        let currentIndex = 0;
+        let isPlaying = false;
+
+        const audio = new Audio();  // 纯JS音频对象
+        const cover = document.getElementById("cover");
+        const title = document.getElementById("title");
+        const artist = document.getElementById("artist");
+        const playBtn = document.getElementById("playBtn");
+        const progress = document.getElementById("progress");  // 进度条填充层
+        const progressContainer = document.getElementById("progressContainer");  // 进度条容器
+
+        function loadSong(index) {
+            const song = songs[index];
+            audio.src = staticPath + song.file;
+            cover.src = staticPath + song.cover;
+            title.textContent = song.title;
+            artist.textContent = song.artist;
+        }
+
+        function playSong() {
+            audio.play();
+            isPlaying = true;
+            playBtn.textContent = "⏸️";
+        }
+
+        function pauseSong() {
+            audio.pause();
+            isPlaying = false;
+            playBtn.textContent = "▶️";
+        }
+
+        function togglePlay() {
+            isPlaying ? pauseSong() : playSong();
+        }
+
+        function prevSong() {
+            currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+            loadSong(currentIndex);
+            playSong();
+        }
+
+        function nextSong() {
+            currentIndex = (currentIndex + 1) % songs.length;
+            loadSong(currentIndex);
+            playSong();
+        }
+
+        // 音频播放结束自动下一首
+        audio.addEventListener("ended", nextSong);
+
+        // 监听播放进度，更新进度条宽度
+        audio.addEventListener("timeupdate", () => {
+            if (audio.duration) {
+                const percent = (audio.currentTime / audio.duration) * 100;
+                progress.style.width = percent + "%";
+            }
+        });
+
+        // 点击进度条调整播放时间
+        progressContainer.addEventListener("click", (e) => {
+            const width = progressContainer.clientWidth;
+            const clickX = e.offsetX;
+            const duration = audio.duration;
+            if (duration) {
+                audio.currentTime = (clickX / width) * duration;
+            }
+        });
+
+        // 绑定按钮事件
+        playBtn.addEventListener("click", togglePlay);
+        document.getElementById("prevBtn").addEventListener("click", prevSong);
+        document.getElementById("nextBtn").addEventListener("click", nextSong);
+
+        // 初始化加载第一首歌
+        loadSong(currentIndex);
+    </script>
+
+    <script>
         function launchIntegratedDemo() {
             fetch('/integrated/launch/', {
                 method: 'POST',
@@ -402,5 +588,34 @@
             });
         }
     </script>
+
+    <script>
+        // 初始温度，取模板里的数字，去掉末尾的 '°' 并转成数字
+        let tempValueElem = document.getElementById('temp-value');
+        let temperature = parseInt(tempValueElem.textContent);
+
+        // 减少按钮
+        document.getElementById('decrease-btn').addEventListener('click', () => {
+            temperature-=0.5;
+            tempValueElem.textContent = temperature.toFixed(1) + '°';
+        });
+
+        // 增加按钮
+        document.getElementById('increase-btn').addEventListener('click', () => {
+            temperature+=0.5;
+            tempValueElem.textContent = temperature.toFixed(1) + '°';
+        });
+    </script>
+    <script>
+function updateTime() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    document.getElementById('current-time').textContent = `${hours}:${minutes}`;
+}
+setInterval(updateTime, 1000); // 每秒更新一次
+updateTime(); // 初始化
+</script>
+
 </body>
 </html> 
