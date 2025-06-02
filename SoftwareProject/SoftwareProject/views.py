@@ -14,3 +14,6 @@ def home(request):
         'playing_artist': '陈粒',
     }
     return render(request, 'index.html', context)
+
+def admin_page(request):
+    return render(request, 'admin.html')
