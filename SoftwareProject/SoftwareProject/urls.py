@@ -26,4 +26,5 @@ urlpatterns = [
     # path('speech_recognition/', include('speech_recognition.urls')),  #lhz改 暂时注释掉speech_recognition
     path('gesture/', include('gesture.urls')),
     path('integrated/', include('integrated_view.urls')),
+    path('speech/', include('speech.urls')),  # 添加speech应用URL
 ]

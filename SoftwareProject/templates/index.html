@@ -225,31 +225,7 @@
             margin-top: 10px;
         }
 
-        /* Modal styles */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-            justify-content: center;
-            align-items: center;
-        }
 
-        .modal-content {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            font-size: 24px;
-            color: #333;
-            width: 300px; /* Same width as recognize.html box */
-        }
         .status-bar {
             position: fixed;
             top: 0;
@@ -430,13 +406,7 @@
         </div>
     </div>
 
-    <!-- The Modal -->
-    <div id="speechRecognitionModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            请说...
-        </div>
-    </div>
+
 
     <script async src="https://app3.weatherwidget.org/js/?id=ww_c68eb251cf771"></script>
     <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=YOUR_AMAP_API_KEY"></script>
@@ -446,24 +416,35 @@
             center: [116.397428, 39.909188]
         });
 
-        // Get the modal
-        var modal = document.getElementById("speechRecognitionModal");
-
-        // Get the icon that opens the modal
+        // Get the icon that opens speech recognition
         var icon = document.getElementById("speech-recognition-icon");
 
-        // When the user clicks the icon, open the modal
+        // When the user clicks the icon, redirect to speech recognition page
         icon.onclick = function(event) {
             event.preventDefault(); // Prevent default anchor behavior
-            modal.style.display = "flex";
+            window.location.href = '/speech/recognize/';
         }
 
-        // When the user clicks anywhere outside of the modal content, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
+        // 定期检查唤醒词状态
+        function checkWakeWordStatus() {
+            fetch('/speech/check-wake-word/')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.wake_word_detected) {
+                        console.log('检测到唤醒词，跳转到语音识别页面');
+                        window.location.href = '/speech/recognize/';
+                    }
+                })
+                .catch(error => {
+                    console.error('检查唤醒词状态时出错:', error);
+                });
         }
+
+        // 每2秒检查一次唤醒词状态
+        setInterval(checkWakeWordStatus, 2000);
+        
+        // 页面加载时立即检查一次
+        checkWakeWordStatus();
 
     </script>
 
@@ -618,4 +599,4 @@ updateTime(); // 初始化
 </script>
 
 </body>
-</html> 
+</html>
