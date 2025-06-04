@@ -1,20 +1,23 @@
 # Vehicle-mounted-multimodal-intelligent-interaction-system
 
 ## 项目介绍
-这是一个基于Django框架开发的车载多模态智能交互系统，支持语音识别和手势识别等多种交互方式。
+这是一个基于Django框架开发的车载多模态智能交互系统demo，支持语音识别、手势识别、面部识别等多种交互方式。
 
 
 ## 环境配置
 
 ### 系统要求
-- Python 3.9+
-- MySQL 5.7+
+- Python 3.9
+- MySQL 5.7
+- Django 4.2.21
 - CUDA（可选，用于GPU加速）
 
 ### 使用Conda配置环境
 
 
- 创建并激活Conda环境
+
+<div style="display:none">
+创建并激活Conda环境
 ```bash
 # 1. 创建并激活conda环境
 conda create -n vehicle_system python=3.9
@@ -29,4 +32,6 @@ conda install pytorch torchvision torchaudio -c pytorch
 # 4. 安装其他Python包
 pip install -r requirements.txt
 ```
+</div>
+ 
 
