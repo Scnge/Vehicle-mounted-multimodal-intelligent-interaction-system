@@ -1,0 +1,633 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="zh">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8" />-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--  <title>后台管理页面</title>-->
+<!--  <style>-->
+<!--    body {-->
+<!--      font-family: "Segoe UI", "Microsoft YaHei", sans-serif;-->
+<!--      background: #f4f6f9;-->
+<!--      margin: 0;-->
+<!--      padding: 0;-->
+<!--      position: relative;-->
+<!--      min-height: 100vh;-->
+<!--    }-->
+
+<!--    /* 返回按钮样式 */-->
+<!--    .back-button {-->
+<!--      position: fixed;-->
+<!--      top: 20px;-->
+<!--      left: 20px;-->
+<!--      z-index: 1000;-->
+
+<!--      display: flex;-->
+<!--      align-items: center;-->
+<!--      gap: 8px;-->
+<!--      padding: 10px 18px 10px 16px;-->
+<!--      background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);-->
+<!--      color: white;-->
+<!--      border: none;-->
+<!--      border-radius: 50px;-->
+<!--      font-size: 15px;-->
+<!--      font-weight: 500;-->
+<!--      cursor: pointer;-->
+<!--      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);-->
+<!--      transition: all 0.3s ease;-->
+<!--      text-decoration: none;-->
+<!--    }-->
+
+<!--    .back-button:hover {-->
+<!--      transform: translateY(-2px);-->
+<!--      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);-->
+<!--      background: linear-gradient(135deg, #3d62d4 0%, #1a3bb8 100%);-->
+<!--    }-->
+
+<!--    .back-button:active {-->
+<!--      transform: translateY(1px);-->
+<!--      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);-->
+<!--    }-->
+
+<!--    .back-button::before {-->
+<!--      content: "←";-->
+<!--      font-size: 18px;-->
+<!--      display: inline-block;-->
+<!--      transition: transform 0.3s ease;-->
+<!--    }-->
+
+<!--    .back-button:hover::before {-->
+<!--      transform: translateX(-3px);-->
+<!--    }-->
+
+<!--    .container {-->
+<!--      max-width: 700px;-->
+<!--      margin: 60px auto;-->
+<!--      background-color: #ffffff;-->
+<!--      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);-->
+<!--      padding: 30px 40px;-->
+<!--      border-radius: 12px;-->
+<!--      position: relative;-->
+<!--    }-->
+
+<!--    h1 {-->
+<!--      text-align: center;-->
+<!--      color: #333;-->
+<!--      margin-bottom: 30px;-->
+<!--      font-size: 28px;-->
+<!--    }-->
+
+<!--    .input-group {-->
+<!--      display: flex;-->
+<!--      align-items: center;-->
+<!--      justify-content: space-between;-->
+<!--      margin-bottom: 25px;-->
+<!--      gap: 10px;-->
+<!--    }-->
+
+<!--    .input-group input {-->
+<!--      flex: 1.2;-->
+<!--      padding: 10px 12px;-->
+<!--      font-size: 16px;-->
+<!--      border: 1px solid #ccc;-->
+<!--      border-radius: 6px;-->
+<!--      outline: none;-->
+<!--    }-->
+
+<!--    .input-group select {-->
+<!--      flex: 1;-->
+<!--      padding: 9px 12px;-->
+<!--      font-size: 15px;-->
+<!--      border: 1px solid #ccc;-->
+<!--      border-radius: 6px;-->
+<!--      background-color: #f9f9f9;-->
+<!--    }-->
+
+<!--    .input-group button {-->
+<!--      flex-shrink: 0;-->
+<!--      padding: 9px 16px;-->
+<!--      font-size: 15px;-->
+<!--      border: none;-->
+<!--      border-radius: 6px;-->
+<!--      background-color: #a8e6a1;-->
+<!--      color: #1b5e20;-->
+<!--      cursor: pointer;-->
+<!--      transition: background-color 0.3s;-->
+<!--    }-->
+
+<!--    .input-group button:hover {-->
+<!--      background-color: #81c784;-->
+<!--    }-->
+
+<!--    #logArea {-->
+<!--      width: 100%;-->
+<!--      height: 120px;-->
+<!--      resize: none;-->
+<!--      border-radius: 6px;-->
+<!--      border: 1px solid #ccc;-->
+<!--      padding: 10px;-->
+<!--      font-size: 14px;-->
+<!--      font-family: "Microsoft YaHei", monospace, monospace;-->
+<!--      background-color: #f9f9f9;-->
+<!--      color: #333;-->
+<!--    }-->
+
+<!--    .footer {-->
+<!--      text-align: center;-->
+<!--      color: #aaa;-->
+<!--      font-size: 13px;-->
+<!--      margin-top: 30px;-->
+<!--    }-->
+
+<!--    .toast {-->
+<!--      position: fixed;-->
+<!--      top: 30px;-->
+<!--      left: 50%;-->
+<!--      transform: translateX(-50%);-->
+<!--      background-color: #d4edda;-->
+<!--      color: #155724;-->
+<!--      border: 1px solid #c3e6cb;-->
+<!--      padding: 12px 24px;-->
+<!--      border-radius: 8px;-->
+<!--      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);-->
+<!--      font-size: 15px;-->
+<!--      opacity: 0;-->
+<!--      pointer-events: none;-->
+<!--      transition: opacity 0.5s ease-in-out;-->
+<!--      z-index: 999;-->
+<!--    }-->
+
+<!--    .toast.show {-->
+<!--      opacity: 1;-->
+<!--    }-->
+
+<!--    /* 页面标题装饰 */-->
+<!--    .title-decor {-->
+<!--      position: absolute;-->
+<!--      top: -15px;-->
+<!--      left: 50%;-->
+<!--      transform: translateX(-50%);-->
+<!--      width: 60px;-->
+<!--      height: 4px;-->
+<!--      background: linear-gradient(90deg, #4e73df, #224abe);-->
+<!--      border-radius: 2px;-->
+<!--    }-->
+<!--  </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--&lt;!&ndash; 返回按钮 &ndash;&gt;-->
+<!--<a href="{% url 'home' %}" class="back-button">返回首页</a>-->
+
+<!--<div class="container">-->
+<!--  <div class="title-decor"></div>-->
+<!--  <h1>后台个性设置页面</h1>-->
+
+<!--  &lt;!&ndash; 第一组 &ndash;&gt;-->
+<!--  <div class="input-group">-->
+<!--    <input type="text" id="input1" placeholder="请选择手势及对应含义" readonly />-->
+<!--    <select id="select1a" onchange="updateInput('input1', 'select1a', 'select1b')">-->
+<!--      <option value="">手势</option>-->
+<!--      <option value="大拇指">大拇指</option>-->
+<!--      <option value="握拳">握拳</option>-->
+<!--      <option value="挥手">挥手</option>-->
+<!--    </select>-->
+<!--    <select id="select1b" onchange="updateInput('input1', 'select1a', 'select1b')">-->
+<!--      <option value="">含义</option>-->
+<!--      <option value="播放音乐">播放音乐</option>-->
+<!--      <option value="打开空调">打开空调</option>-->
+<!--      <option value="调整座椅">调整座椅</option>-->
+<!--    </select>-->
+<!--    <button onclick="handleAdd()">添加</button>-->
+<!--  </div>-->
+
+<!--  &lt;!&ndash; 日志窗口 &ndash;&gt;-->
+<!--  <div class="input-group" style="flex-direction: column; align-items: stretch;">-->
+<!--    <label for="logArea" style="font-weight: bold; margin-bottom: 6px;">操作日志</label>-->
+<!--    <textarea id="logArea" readonly placeholder="这里会显示已添加的记录..."></textarea>-->
+<!--  </div>-->
+
+<!--  <div class="footer">-->
+<!--    &copy; 智能车载系统后台管理-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div id="toast" class="toast"></div>-->
+
+<!--<script>-->
+<!--  function updateInput(inputId, selAId, selBId) {-->
+<!--    const selA = document.getElementById(selAId).value;-->
+<!--    const selB = document.getElementById(selBId).value;-->
+<!--    const input = document.getElementById(inputId);-->
+
+<!--    if (selA && selB) {-->
+<!--      input.value = `${selA} - ${selB}`;-->
+<!--    } else {-->
+<!--      input.value = '';-->
+<!--    }-->
+<!--  }-->
+
+<!--  function showToast(message) {-->
+<!--    const toast = document.getElementById('toast');-->
+<!--    toast.textContent = message;-->
+<!--    toast.classList.add('show');-->
+<!--    setTimeout(() => {-->
+<!--      toast.classList.remove('show');-->
+<!--    }, 2000);-->
+<!--  }-->
+
+<!--  function handleAdd() {-->
+<!--    const selA = document.getElementById('select1a');-->
+<!--    const selB = document.getElementById('select1b');-->
+<!--    const input = document.getElementById('input1');-->
+<!--    const logArea = document.getElementById('logArea');-->
+
+<!--    if (selA.value && selB.value) {-->
+<!--      const record = input.value;-->
+<!--      showToast(`添加成功：${record}`);-->
+
+<!--      // 追加日志内容-->
+<!--      logArea.value += `${new Date().toLocaleString()} - ${record}\n`;-->
+
+<!--      // 自动滚动到底部-->
+<!--      logArea.scrollTop = logArea.scrollHeight;-->
+
+<!--      // 清空选择和输入框-->
+<!--      selA.value = '';-->
+<!--      selB.value = '';-->
+<!--      input.value = '';-->
+<!--    } else {-->
+<!--      showToast("请先选择两个选项！");-->
+<!--    }-->
+<!--  }-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>后台管理页面</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(135deg, #f4f6f9 0%, #e9ecef 100%);
+      margin: 0;
+      padding: 0;
+      position: relative;
+      min-height: 100vh;
+      color: #333;
+    }
+
+    /* 返回按钮样式 */
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px 10px 16px;
+      background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .back-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(135deg, #1b5e20 0%, #388e3c 100%);
+    }
+
+    .back-button:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .back-button::before {
+      content: "←";
+      font-size: 18px;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .back-button:hover::before {
+      transform: translateX(-3px);
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 80px auto 40px;
+      background-color: #ffffff;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      padding: 40px;
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #2e7d32, #4caf50);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2e7d32;
+      margin-bottom: 30px;
+      font-size: 28px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    h1::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #2e7d32, #4caf50);
+      border-radius: 2px;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+      gap: 10px;
+    }
+
+    .input-group input {
+      flex: 1.2;
+      padding: 12px 16px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      transition: all 0.3s ease;
+      background-color: #fafafa;
+    }
+
+    .input-group input:focus {
+      border-color: #4caf50;
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+    }
+
+    .input-group select {
+      flex: 1;
+      padding: 11px 14px;
+      font-size: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fafafa;
+      transition: all 0.3s ease;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234caf50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px;
+    }
+
+    .input-group select:focus {
+      border-color: #4caf50;
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+    }
+
+    .input-group button {
+      flex-shrink: 0;
+      padding: 11px 20px;
+      font-size: 15px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+    }
+
+    .input-group button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(76, 175, 80, 0.4);
+      background: linear-gradient(135deg, #1b5e20 0%, #388e3c 100%);
+    }
+
+    .input-group button:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 6px rgba(76, 175, 80, 0.3);
+    }
+
+    #logArea {
+      width: 100%;
+      height: 140px;
+      resize: none;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      padding: 12px;
+      font-size: 14px;
+      font-family: "Microsoft YaHei", monospace, monospace;
+      background-color: #fafafa;
+      color: #333;
+      transition: all 0.3s ease;
+    }
+
+    #logArea:focus {
+      border-color: #4caf50;
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+    }
+
+    .footer {
+      text-align: center;
+      color: #666;
+      font-size: 13px;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+
+    /* 提示气泡 */
+    .toast {
+      position: fixed;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      font-size: 15px;
+      font-weight: 500;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease-in-out;
+      z-index: 999;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .container {
+        margin: 70px 20px 30px;
+        padding: 30px 20px;
+      }
+
+      .input-group {
+        flex-wrap: wrap;
+      }
+
+      .input-group input {
+        flex: 1 0 100%;
+        margin-bottom: 10px;
+      }
+
+      .input-group select {
+        flex: 1;
+        min-width: calc(50% - 5px);
+      }
+
+      .input-group button {
+        flex: 1 0 100%;
+        margin-top: 10px;
+        padding: 12px;
+      }
+
+      .back-button {
+        top: 15px;
+        left: 15px;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 返回按钮 -->
+<a href="{% url 'home' %}" class="back-button">返回首页</a>
+
+<div class="container">
+  <h1>后台个性设置页面</h1>
+
+  <!-- 第一组 -->
+  <div class="input-group">
+    <input type="text" id="input1" placeholder="请选择手势及对应含义" readonly />
+    <select id="select1a" onchange="updateInput('input1', 'select1a', 'select1b')">
+      <option value="">手势</option>
+      <option value="大拇指">大拇指</option>
+      <option value="握拳">握拳</option>
+      <option value="挥手">挥手</option>
+    </select>
+    <select id="select1b" onchange="updateInput('input1', 'select1a', 'select1b')">
+      <option value="">含义</option>
+      <option value="播放音乐">播放音乐</option>
+      <option value="打开空调">打开空调</option>
+      <option value="调整座椅">调整座椅</option>
+    </select>
+    <button onclick="handleAdd()">添加</button>
+  </div>
+
+  <!-- 日志窗口 -->
+  <div class="input-group" style="flex-direction: column; align-items: stretch;">
+    <label for="logArea" style="font-weight: bold; margin-bottom: 8px; color: #2e7d32;">操作日志</label>
+    <textarea id="logArea" readonly placeholder="这里会显示已添加的记录..."></textarea>
+  </div>
+
+  <div class="footer">
+    &copy; 智能车载系统后台管理
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+  function updateInput(inputId, selAId, selBId) {
+    const selA = document.getElementById(selAId).value;
+    const selB = document.getElementById(selBId).value;
+    const input = document.getElementById(inputId);
+
+    if (selA && selB) {
+      input.value = `${selA} - ${selB}`;
+    } else {
+      input.value = '';
+    }
+  }
+
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2000);
+  }
+
+  function handleAdd() {
+    const selA = document.getElementById('select1a');
+    const selB = document.getElementById('select1b');
+    const input = document.getElementById('input1');
+    const logArea = document.getElementById('logArea');
+
+    if (selA.value && selB.value) {
+      const record = input.value;
+      showToast(`添加成功：${record}`);
+
+      // 追加日志内容
+      const timestamp = new Date().toLocaleTimeString();
+      logArea.value += `${timestamp} - ${record}\n`;
+
+      // 自动滚动到底部
+      logArea.scrollTop = logArea.scrollHeight;
+
+      // 清空选择和输入框
+      selA.value = '';
+      selB.value = '';
+      input.value = '';
+    } else {
+      showToast("请先选择两个选项！");
+    }
+  }
+
+  // 页面加载时检查日志区域内容
+  window.addEventListener('DOMContentLoaded', () => {
+    const logArea = document.getElementById('logArea');
+    if (!logArea.value) {
+      logArea.value = "系统已就绪，等待操作...\n";
+    }
+  });
+</script>
+
+</body>
+</html>

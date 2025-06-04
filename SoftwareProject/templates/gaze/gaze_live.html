@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>实时视线识别</title>
+<style>
+  body{font-family:sans-serif;padding:10px}
+  video,canvas{width:640px;height:480px;border:1px solid #ccc;border-radius:4px}
+  #info{margin-top:8px;font-size:16px}
+</style>
+</head>
+<body>
+<h2>实时视线识别</h2>
+
+<video id="video" autoplay muted playsinline></video>
+<canvas id="overlay"></canvas>
+<div id="info">等待摄像头授权…</div>
+
+<script>
+const video=document.getElementById('video');
+const overlay=document.getElementById('overlay');
+const ctx=overlay.getContext('2d');
+const info=document.getElementById('info');
+
+async function initCam(){
+  try{
+    // localhost 或 127.0.0.1 上允许 http 调用摄像头；其它域需 https
+    const stream=await navigator.mediaDevices.getUserMedia({video:true});
+    video.srcObject=stream;
+  }catch(e){
+    info.textContent="无法调用摄像头："+e;
+  }
+}
+initCam();
+
+video.addEventListener('playing',()=>{
+  overlay.width = video.videoWidth;
+  overlay.height= video.videoHeight;
+  loop();
+});
+
+async function loop(){
+  // 把当前帧缩放到 224×224，减少带宽
+  const tmp=document.createElement('canvas');
+  tmp.width=224; tmp.height=224;
+  tmp.getContext('2d').drawImage(video,0,0,tmp.width,tmp.height);
+  const b64=tmp.toDataURL('image/jpeg',0.6);
+
+  try{
+    const res=await fetch('/gaze/api/',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({image:b64})
+    });
+    if(res.ok){
+      const {pitch,yaw}=await res.json();
+      info.textContent=`pitch=${pitch.toFixed(1)}°, yaw=${yaw.toFixed(1)}°`;
+      drawPoint(pitch,yaw);
+    }else{
+      info.textContent='API Error '+res.status;
+    }
+  }catch(err){
+    info.textContent='Fetch Error '+err;
+  }
+  requestAnimationFrame(loop);
+}
+
+function drawPoint(pitch,yaw){
+  ctx.clearRect(0,0,overlay.width,overlay.height);
+  const cx=overlay.width/2 + yaw*2;  // 简单把角度映射到坐标
+  const cy=overlay.height/2 - pitch*2;
+  ctx.beginPath();
+  ctx.arc(cx,cy,8,0,Math.PI*2);
+  ctx.fillStyle='red';
+  ctx.fill();
+}
+</script>
+</body>
+</html>

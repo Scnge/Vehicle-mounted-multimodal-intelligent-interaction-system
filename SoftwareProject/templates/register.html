@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            font-family: "Microsoft YaHei", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .register-container {
+            background-color: #ffffff;
+            border: 1px solid #90caf9;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(24,144,255,0.08);
+            padding: 40px 50px;
+            width: 100%;
+            max-width: 420px;
+            box-sizing: border-box;
+        }
+
+        .register-container h2 {
+            text-align: center;
+            color: #1890ff;
+            margin-bottom: 30px;
+        }
+
+        .register-container label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .register-container input {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 20px;
+            border: 1px solid #b3c2d8;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .register-container button {
+            width: 100%;
+            background-color: #1890ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .register-container button:hover {
+            background-color: #1565c0;
+        }
+
+        .switch-link {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .switch-link a {
+            color: #1890ff;
+            text-decoration: none;
+            margin-left: 6px;
+        }
+
+        .switch-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <form method="post">
+            {% csrf_token %}
+            <h2>注册新账号</h2>
+            {{ form.as_p }}
+            <button type="submit">注册</button>
+        </form>
+        <div class="switch-link">
+            已有账号？
+            <a href="{% url 'login' %}">去登录</a>
+        </div>
+    </div>
+</body>
+</html>

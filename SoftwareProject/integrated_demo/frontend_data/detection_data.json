@@ -1,14 +1,60 @@
 {
-    "timestamp": "2025-05-30T18:00:45.017678",
+    "timestamp": "2025-06-04T22:34:31.894334",
     "face_detected": true,
     "hand_detected": false,
     "face_box": [
-        214,
-        293,
-        179,
-        180
+        344,
+        228,
+        149,
+        149
     ],
     "last_events": [
+        {
+            "timestamp": "2025-06-04T19:30:56.604590",
+            "event_type": "hand_gesture",
+            "details": {
+                "gesture_name": "fist",
+                "hold_time": 1.0613563060760498,
+                "bbox": [
+                    86.0,
+                    298.0,
+                    238.0,
+                    449.0
+                ],
+                "hold_threshold": 1.0
+            }
+        },
+        {
+            "timestamp": "2025-06-04T19:23:11.298607",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": 4.045654296875,
+                    "total_y": -43.93896484375,
+                    "abs_x": 4.045654296875,
+                    "abs_y": 43.93896484375,
+                    "track_points": 15,
+                    "dir_history": 15,
+                    "total_disp": 44.12482238185353
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-06-04T19:23:06.049663",
+            "event_type": "hand_gesture",
+            "details": {
+                "gesture_name": "little_finger",
+                "hold_time": 1.056152582168579,
+                "bbox": [
+                    397.0,
+                    351.0,
+                    534.0,
+                    432.0
+                ],
+                "hold_threshold": 1.0
+            }
+        },
         {
             "timestamp": "2025-05-27T19:50:42.464874",
             "event_type": "shake",
@@ -1195,9 +1241,9 @@
         }
     ],
     "fatigue_level": 60,
-    "ear": 0.3360124434201972,
-    "mar": 0.4951073573079799,
-    "current_gesture": "ok",
+    "ear": 0.31687607299656606,
+    "mar": 0.42709791596188984,
+    "current_gesture": "fist",
     "system_status": "正在检测人脸",
-    "head_gesture": "shake"
+    "head_gesture": "nod"
 }
