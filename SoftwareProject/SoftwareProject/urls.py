@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from . import views
+from django.contrib.auth import views as auth_views
+from .forms import CustomLoginForm  
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +30,9 @@ urlpatterns = [
     path('integrated/', include('integrated_view.urls')),
     path('speech/', include('speech.urls')),  # 添加speech应用URL
     path('admin-page/', views.admin_page, name='admin_page'),
+
+    path('register/', views.register, name='register'),  # 自定义注册视图
+    path('login/', views.custom_login, name='login'),
+    path('logout/', views.custom_logout, name='logout'),
+
 ]
