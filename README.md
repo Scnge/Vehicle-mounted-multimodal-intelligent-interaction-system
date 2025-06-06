@@ -7,31 +7,20 @@
 ## 环境配置
 
 ### 系统要求
+- windows
 - Python 3.9
 - MySQL 5.7
 - Django 4.2.21
-- CUDA（可选，用于GPU加速）
+- 具体环境见requirements.txt
 
 ### 使用Conda配置环境
-
-
-
-<div style="display:none">
-创建并激活Conda环境
-```bash
-# 1. 创建并激活conda环境
-conda create -n vehicle_system python=3.9
-conda activate vehicle_system
-
-# 2. 安装系统依赖
-brew install portaudio ffmpeg pkg-config mysql-connector-c mysql
-
-# 3. 安装PyTorch（建议使用conda安装以获得更好的性能）
-conda install pytorch torchvision torchaudio -c pytorch
-
-# 4. 安装其他Python包
-pip install -r requirements.txt
-```
-</div>
+1. 创建conda环境
+   ~~~bash
+   conda create -n env-name python=3.9
+   ~~~
+2. 激活conda环境
+   ~~~
+   conda activate env-name
+   ~~~
+3. 运行requirements.txt配置环境
  
-
