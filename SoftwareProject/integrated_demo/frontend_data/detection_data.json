@@ -1,14 +1,122 @@
 {
-    "timestamp": "2025-06-04T22:34:31.894334",
+    "timestamp": "2025-06-06T16:07:31.521078",
     "face_detected": true,
     "hand_detected": false,
     "face_box": [
-        344,
-        228,
-        149,
-        149
+        194,
+        254,
+        179,
+        179
     ],
     "last_events": [
+        {
+            "timestamp": "2025-06-06T16:07:31.521078",
+            "event_type": "hand_gesture",
+            "details": {
+                "gesture_name": "part_hand_heart",
+                "hold_time": 1.0211472511291504,
+                "bbox": [
+                    -32.0,
+                    252.0,
+                    167.0,
+                    471.0
+                ],
+                "hold_threshold": 1.0
+            }
+        },
+        {
+            "timestamp": "2025-06-06T15:48:32.098486",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": -29.960784912109375,
+                    "total_y": -60.68292236328125,
+                    "abs_x": 29.960784912109375,
+                    "abs_y": 60.68292236328125,
+                    "track_points": 15,
+                    "dir_history": 5,
+                    "total_disp": 67.67618265754726
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-06-06T15:48:30.079997",
+            "event_type": "hand_gesture",
+            "details": {
+                "gesture_name": "like",
+                "hold_time": 1.6248540878295898,
+                "bbox": [
+                    422.0,
+                    204.0,
+                    604.0,
+                    428.0
+                ],
+                "hold_threshold": 1.0
+            }
+        },
+        {
+            "timestamp": "2025-06-06T15:48:29.512590",
+            "event_type": "hand_gesture",
+            "details": {
+                "gesture_name": "like",
+                "hold_time": 1.054936170578003,
+                "bbox": [
+                    420.0,
+                    205.0,
+                    608.0,
+                    433.0
+                ],
+                "hold_threshold": 1.0
+            }
+        },
+        {
+            "timestamp": "2025-06-06T15:48:27.693791",
+            "event_type": "hand_gesture",
+            "details": {
+                "gesture_name": "fist",
+                "hold_time": 1.1572189331054688,
+                "bbox": [
+                    407.0,
+                    267.0,
+                    622.0,
+                    446.0
+                ],
+                "hold_threshold": 1.0
+            }
+        },
+        {
+            "timestamp": "2025-06-06T15:48:22.940397",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": 0.49249267578125,
+                    "total_y": 61.00128173828125,
+                    "abs_x": 0.49249267578125,
+                    "abs_y": 61.00128173828125,
+                    "track_points": 5,
+                    "dir_history": 2,
+                    "total_disp": 61.0032697709628
+                },
+                "threshold": 35.0
+            }
+        },
+        {
+            "timestamp": "2025-06-06T15:48:19.460035",
+            "event_type": "nod",
+            "details": {
+                "motion_data": {
+                    "total_x": 7.49761962890625,
+                    "total_y": -104.17617797851562,
+                    "abs_x": 7.49761962890625,
+                    "abs_y": 104.17617797851562,
+                    "track_points": 5,
+                    "dir_history": 3,
+                    "total_disp": 104.44563350524102
+                },
+                "threshold": 35.0
+            }
+        },
         {
             "timestamp": "2025-06-04T19:30:56.604590",
             "event_type": "hand_gesture",
@@ -1241,9 +1349,9 @@
         }
     ],
     "fatigue_level": 60,
-    "ear": 0.31687607299656606,
-    "mar": 0.42709791596188984,
-    "current_gesture": "fist",
+    "ear": 0.2931103609150626,
+    "mar": 0.4986952068213771,
+    "current_gesture": "part_hand_heart",
     "system_status": "正在检测人脸",
     "head_gesture": "nod"
 }
