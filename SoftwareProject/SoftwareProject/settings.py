@@ -108,7 +108,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sp',       # 改成你实际的数据库名
         'USER': 'root',          # 一般是 root
-        'PASSWORD': '051039',  # 你设置的密码
+        'PASSWORD': 'root',  # 你设置的密码
         'HOST': 'localhost',
         'PORT': '3306',
     }

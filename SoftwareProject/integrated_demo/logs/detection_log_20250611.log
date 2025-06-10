@@ -1,0 +1,7 @@
+2025-06-11 00:55:42,110 - INFO - 系统启动
+2025-06-11 00:55:49,000 - INFO - {"timestamp": "2025-06-11T00:55:49.000395", "event_type": "shake", "details": {"motion_data": {"total_x": -37.7633056640625, "total_y": -3.1656494140625, "abs_x": 37.7633056640625, "abs_y": 3.1656494140625, "track_points": 15, "dir_history": 12, "total_disp": 37.89575953705334}, "threshold": 10.0}}
+2025-06-11 00:58:42,790 - INFO - 系统启动
+2025-06-11 00:58:54,266 - INFO - {"timestamp": "2025-06-11T00:58:54.266882", "event_type": "hand_gesture", "details": {"gesture_name": "fist", "hold_time": 1.056363821029663, "bbox": [381.0, 157.0, 470.0, 243.0], "hold_threshold": 1.0}}
+2025-06-11 00:58:56,363 - INFO - {"timestamp": "2025-06-11T00:58:56.363439", "event_type": "shake", "details": {"motion_data": {"total_x": -30.614227294921875, "total_y": 4.865814208984375, "abs_x": 30.614227294921875, "abs_y": 4.865814208984375, "track_points": 15, "dir_history": 15, "total_disp": 30.99850094410202}, "threshold": 10.0}}
+2025-06-11 01:18:30,583 - INFO - 系统启动
+2025-06-11 01:18:37,858 - INFO - {"timestamp": "2025-06-11T01:18:37.858292", "event_type": "hand_gesture", "details": {"gesture_name": "palm", "hold_time": 1.0472962856292725, "bbox": [516.0, 177.0, 647.0, 343.0], "hold_threshold": 1.0}}
