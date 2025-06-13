@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+语音识别服务模块
+该模块负责管理语音识别服务的启动、唤醒词检测、录音和指令处理。
+"""
+
 # speech/services.py
 import threading
 import time

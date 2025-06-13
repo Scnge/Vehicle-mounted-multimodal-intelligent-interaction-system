@@ -1,3 +1,13 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+唤醒词检测状态检查 API
+该模块提供一个 API 接口，用于检查唤醒词检测状态。
+该接口会检查一个标志文件，如果文件存在且在最近5秒内被创建，则返回唤醒词检测成功的状态。
+如果文件不存在或过期，则返回唤醒词检测失败的状态。
+"""
+
 import os
 import time
 from django.conf import settings

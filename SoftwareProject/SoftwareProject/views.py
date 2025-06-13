@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+'''
+主界面系统，处理用户请求并返回相应的网页，定义7个视图函数
+'''
+
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm

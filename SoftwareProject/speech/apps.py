@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+语音识别应用配置
+该模块负责初始化语音识别服务，并在应用启动时自动加载。
+"""
+
 # speech/apps.py
 from django.apps import AppConfig
 import threading

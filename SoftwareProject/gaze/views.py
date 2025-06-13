@@ -1,3 +1,12 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+视线追踪 API
+该模块提供一个 API 接口，用于处理视线追踪请求。
+该接口接收一个包含图像数据的 POST 请求，并返回预测的 pitch 和 yaw 值。
+"""
+
 # gaze/views.py
 import json, base64, io, traceback, time
 from PIL import Image

@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+集成演示视图模块
+该模块处理集成演示的视图逻辑，包括启动演示程序和获取检测数据。
+"""
+
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import subprocess

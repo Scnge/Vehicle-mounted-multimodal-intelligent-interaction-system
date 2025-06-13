@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+语音识别模型定义
+该模块定义了语音指令和语音识别记录的数据库模型。
+"""
+
 # /Users/kalami/大三下/软件工程/小组作业/Vehicle-mounted-multimodal-intelligent-interaction-system/SoftwareProject/speech/models.py
 from django.db import models
 

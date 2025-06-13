@@ -1,3 +1,12 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+语音识别视图模块
+该模块负责处理语音指令的识别、匹配和执行。
+它包括指令匹配、执行动作、记录语音识别结果等功能。
+"""
+
 # /Users/kalami/大三下/软件工程/小组作业/Vehicle-mounted-multimodal-intelligent-interaction-system/SoftwareProject/speech/views.py
 from django.shortcuts import render
 from django.http import JsonResponse
