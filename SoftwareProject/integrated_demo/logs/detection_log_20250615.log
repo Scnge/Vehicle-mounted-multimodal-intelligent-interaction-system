@@ -1,0 +1,13 @@
+2025-06-15 12:41:39,561 - INFO - 系统启动
+2025-06-15 12:48:50,248 - INFO - 系统启动
+2025-06-15 12:49:06,269 - INFO - 系统启动
+2025-06-15 12:49:27,308 - INFO - 系统启动
+2025-06-15 12:49:53,144 - INFO - 系统启动
+2025-06-15 13:06:00,669 - INFO - 系统启动
+2025-06-15 13:06:39,429 - INFO - 系统启动
+2025-06-15 13:06:49,174 - INFO - {"timestamp": "2025-06-15T13:06:49.174318", "event_type": "hand_gesture", "details": {"gesture_name": "ok", "hold_time": 1.0760126113891602, "bbox": [417.0, 209.0, 551.0, 387.0], "hold_threshold": 1.0}}
+2025-06-15 16:48:20,575 - INFO - 系统启动
+2025-06-15 16:48:34,347 - INFO - {"timestamp": "2025-06-15T16:48:34.347362", "event_type": "hand_gesture", "details": {"gesture_name": "stop", "hold_time": 1.0662331581115723, "bbox": [12.0, 103.0, 298.0, 369.0], "hold_threshold": 1.0}}
+2025-06-15 16:48:37,764 - INFO - {"timestamp": "2025-06-15T16:48:37.764241", "event_type": "shake", "details": {"motion_data": {"total_x": 30.4091796875, "total_y": -2.2215576171875, "abs_x": 30.4091796875, "abs_y": 2.2215576171875, "track_points": 15, "dir_history": 20, "total_disp": 30.490219116210938}, "threshold": 10.0}}
+2025-06-15 16:48:44,245 - INFO - {"timestamp": "2025-06-15T16:48:44.245205", "event_type": "nod", "details": {"motion_data": {"total_x": -9.978515625, "total_y": -42.19384765625, "abs_x": 9.978515625, "abs_y": 42.19384765625, "track_points": 15, "dir_history": 4, "total_disp": 43.35771560668945}, "threshold": 35.0}}
+2025-06-15 16:48:44,906 - INFO - {"timestamp": "2025-06-15T16:48:44.906254", "event_type": "blink", "details": {"frames_count": 5, "ear": 0.25129589006374886, "threshold": 0.24}}
